@@ -13,4 +13,5 @@ jobs:
           args: install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
       - run:
           php artisan vendor:publish --provider="NunoMaduro\PhpInsights\Application\Adapters\Laravel\InsightsServiceProvider"
+      - run:
           php artisan insights
