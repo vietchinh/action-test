@@ -1,7 +1,7 @@
 name: PHP Code Styling Fixer
 
 on:
-  pull_request:
+  push:
     branches:
       - 'feature/**'
     paths:
