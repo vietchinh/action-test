@@ -22,6 +22,8 @@ jobs:
           ref: ${{ github.head_ref }}
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
+    - name: Require php-cs-fixer
+      run: composer require nunomaduro/phpinsights --dev
     - name: Install Composer Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
     - name: Generate key
@@ -34,7 +36,7 @@ jobs:
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       run: vendor/bin/phpunit
     - name: Run php-cs-fixer
-      uses: docker://oskarstark/php-cs-fixer-ga
+      run: ./vendor/bin/php-cs-fixer fix
     - uses: stefanzweifel/git-auto-commit-action@v2.5.0
       with:
         commit_message: Apply php-cs-fixer changes
