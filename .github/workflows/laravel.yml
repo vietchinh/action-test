@@ -5,8 +5,7 @@ on:
     branches:
       - 'develop'
       - 'acceptance'
-    paths:
-      - '**.php'
+
 jobs:
   php-cs-fixer:
     runs-on: ubuntu-latest
