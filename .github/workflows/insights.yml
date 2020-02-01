@@ -14,5 +14,5 @@ jobs:
       - run:
           php artisan vendor:publish --provider="NunoMaduro\PhpInsights\Application\Adapters\Laravel\InsightsServiceProvider"
       - name: PHP Insights
-      - run:
+        run:
           php artisan insights -v --min-quality=80 --min-complexity=80 --min-architecture=80 --min-style=80 --disable-security-check
