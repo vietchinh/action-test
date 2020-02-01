@@ -1,4 +1,3 @@
 <?php
-Route::get('/', function () {
-    return view('welcome1');
+Route::get('/', function () {return view('welcome');
 });
