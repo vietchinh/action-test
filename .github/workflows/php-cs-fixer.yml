@@ -1,9 +1,9 @@
 name: Laravel
 
 on:
-  pull_request:
-    paths:
-      - '**.php'
+  push:
+    branches:
+      - 'develop'
 
 jobs:
   laravel-tests:
@@ -23,7 +23,7 @@ jobs:
           restore-keys:
             ${{ runner.os }}-composer-
       - name: Require php-cs-fixer
-        run: composer require nunomaduro/phpinsights --dev
+        run: composer require friendsofphp/php-cs-fixer
       - name: Install Composer Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
       - name: Run php-cs-fixer
