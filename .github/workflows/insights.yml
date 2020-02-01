@@ -1,6 +1,9 @@
 name: PHP Insights
 
-on: push
+on:
+  push:
+    branches:
+      - develop
 
 jobs:
   phpinsights:
@@ -9,13 +12,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: Get Composer Cache Directory
         id: composer-cache
-        run: |
+        run:
           echo "::set-output name=dir::$(composer config cache-files-dir)"
       - uses: actions/cache@v1
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
+          restore-keys:
             ${{ runner.os }}-composer-
       - run: composer require nunomaduro/phpinsights --dev
       - uses: MilesChou/composer-action@master
