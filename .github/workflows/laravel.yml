@@ -24,16 +24,16 @@ jobs:
         repository: vietchinh/action-test
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
-#    - name: Get Composer Cache Directory
-#      id: composer-cache
-#      run:
-#        echo "::set-output name=dir::$(composer config cache-files-dir)"
-#    - uses: actions/cache@v1
-#      with:
-#        path: ${{ steps.composer-cache.outputs.dir }}
-#        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-#        restore-keys:
-#          ${{ runner.os }}-composer-
+    - name: Get Composer Cache Directory
+      id: composer-cache
+      run:
+        echo "::set-output name=dir::$(composer config cache-files-dir)"
+    - uses: actions/cache@v1
+      with:
+        path: ${{ steps.composer-cache.outputs.dir }}
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys:
+          ${{ runner.os }}-composer-
     - name: Require php-cs-fixer
       run: composer require nunomaduro/phpinsights --dev
     - name: Install Composer Dependencies
@@ -52,6 +52,6 @@ jobs:
     - uses: stefanzweifel/git-auto-commit-action@v2.5.0
       with:
         commit_message: Apply php-cs-fixer changes
-        branch: develop
+        repository: vietchinh/action_test
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
