@@ -1,9 +1,9 @@
 name: PHP Insights
 
 on:
-  push:
-    branches:
-      - develop
+  pull_request:
+    paths:
+      - 'develop/**.php'
 
 jobs:
   phpinsights:

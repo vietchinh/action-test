@@ -1,9 +1,10 @@
 name: Laravel
 
 on:
-  push:
-    branches:
-      - develop
+  pull_request:
+    paths:
+      - '**.php'
+
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
@@ -21,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        repository: vietchinh/action-test
+        ref: ${{ github.head_ref }}
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
     - name: Get Composer Cache Directory
@@ -52,6 +53,6 @@ jobs:
     - uses: stefanzweifel/git-auto-commit-action@v2.5.0
       with:
         commit_message: Apply php-cs-fixer changes
-        repository: vietchinh/action_test
+        branch: ${{ github.head_ref }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
