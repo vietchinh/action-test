@@ -1,4 +1,4 @@
-name: Laravel Database Migration Test + PHPUnit
+name: Laravel Database Migration Test + PHPUnit + PHP Code Styling Fix
 
 on:
   pull_request:
@@ -8,6 +8,34 @@ on:
     paths:
       - '**.php'
 jobs:
+  php-cs-fixer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run:
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys:
+            ${{ runner.os }}-composer-
+      - name: Require php-cs-fixer
+        run: composer require friendsofphp/php-cs-fixer
+      - name: Install Composer Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - name: Run php-cs-fixer
+        run: ./vendor/bin/php-cs-fixer fix . --rules=@PSR1,@PSR2
+      - uses: stefanzweifel/git-auto-commit-action@v2.5.0
+        with:
+          commit_message: Apply php-cs-fixer changes
+          branch: ${{ github.head_ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   laravel-tests:
     runs-on: ubuntu-latest
     container:
@@ -48,3 +76,4 @@ jobs:
         php artisan migrate
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       run: vendor/bin/phpunit
+
