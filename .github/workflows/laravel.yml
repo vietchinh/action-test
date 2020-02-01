@@ -1,8 +1,9 @@
 name: Laravel Database Migration Test + PHPUnit
 
 on:
-  branches:
-    - 'feature/**'
+  push:
+    branches:
+      - 'feature/**'
 
 jobs:
   laravel-tests:
