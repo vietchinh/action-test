@@ -3,7 +3,7 @@ name: PHP Code Styling Fixer
 on:
   push:
     branches:
-      - 'develop'
+      - 'feature/**.php'
 
 jobs:
   laravel-tests:
