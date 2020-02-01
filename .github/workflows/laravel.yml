@@ -1,9 +1,10 @@
 name: Laravel Database Migration Test + PHPUnit
 
 on:
-  push:
+  pull_request:
     branches:
-      - 'feature/**'
+      - 'develop'
+      - 'acceptance'
     paths:
       - '**.php'
 jobs:
