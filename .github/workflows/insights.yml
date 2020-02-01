@@ -11,3 +11,6 @@ jobs:
       - uses: MilesChou/composer-action@master
         with:
           args: install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - run:
+          php artisan vendor:publish --provider="NunoMaduro\PhpInsights\Application\Adapters\Laravel\InsightsServiceProvider"
+          php artisan insights
