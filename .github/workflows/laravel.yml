@@ -1,4 +1,4 @@
-name: Laravel
+name: Laravel Database Migration Test + PHPUnit
 
 on:
   push:
