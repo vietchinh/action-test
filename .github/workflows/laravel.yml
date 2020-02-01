@@ -21,7 +21,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-          ref: develop
+        repository: vietchinh/action-test
+        path: action-test
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
     - name: Get Composer Cache Directory
@@ -52,6 +53,6 @@ jobs:
     - uses: stefanzweifel/git-auto-commit-action@v2.5.0
       with:
         commit_message: Apply php-cs-fixer changes
-        repository: develop
+        branch: develop
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
