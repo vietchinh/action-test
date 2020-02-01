@@ -3,7 +3,10 @@ name: PHP Code Styling Fixer
 on:
   pull_request:
     branches:
-      - 'feature/**'
+      - 'develop'
+      - 'acceptance'
+    paths:
+      - '**.php'
 
 jobs:
   laravel-tests:
