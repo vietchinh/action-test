@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+html,
+body {
+  height: 100%;
+}
+
+a#add_table,
+a#add_table:hover {
+  color: inherit;
+}
+
+.hide {
+  display: none;
+}
+
+.spacing_between_content {
+  margin-bottom: 15px;
+}
+
+.navigation-clean {
+  background: #008000;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  color: #333;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .navigation-clean {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+.navigation-clean .navbar-brand {
+  font-weight: 700;
+  color: inherit;
+}
+
+.navigation-clean .navbar-toggler {
+  border-color: #ddd;
+  color: #ECEFF1 !important;
+}
+
+.navigation-clean .navbar-toggler:focus,
+.navigation-clean .navbar-toggler:hover {
+  background: 0 0;
+}
+
+.navigation-clean .form-inline,
+.navigation-clean .navbar-collapse {
+  border-top-color: #ddd;
+}
+
+.navigation-clean.navbar-light .navbar-nav .nav-link.active,
+.navigation-clean.navbar-light .navbar-nav .nav-link.active:focus,
+.navigation-clean.navbar-light .navbar-nav .nav-link.active:hover {
+  color: #8f8f8f;
+  box-shadow: none;
+  background: 0 0;
+  pointer-events: none;
+}
+
+.navigation-clean.navbar .navbar-nav .nav-link {
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.navigation-clean.navbar-light .navbar-nav .nav-link {
+  color: #ECEFF1 !important;
+}
+
+.navigation-clean.navbar-light .navbar-nav .nav-link:focus,
+.navigation-clean.navbar-light .navbar-nav .nav-link:hover {
+  color: #F44336 !important;
+  background-color: transparent;
+}
+
+.navigation-clean .navbar-nav > li > .dropdown-menu {
+  margin-top: -5px;
+  box-shadow: none;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+/*
+ * DataTable Header Sort Icon
+ */
+
+table.dataTable thead > tr > td.sorting,
+table.dataTable thead > tr > td.sorting_asc,
+table.dataTable thead > tr > td.sorting_desc,
+table.dataTable thead > tr > th.sorting,
+table.dataTable thead > tr > th.sorting_asc,
+table.dataTable thead > tr > th.sorting_desc {
+  padding-right: 30px;
+}
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_desc_disabled {
+  cursor: pointer;
+  position: relative;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+  position: absolute;
+  bottom: 0.9em;
+  display: block;
+  opacity: 0.3;
+}
+
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:before {
+  /* >> Symbol you want to use: */
+  content: "\F0DE";
+  /* >> Name of the FA free font (mandatory)
+         - 'Font Awesome 5 Free' for Regular and Solid symbols;
+         - 'Font Awesome 5 Brand' for Brands symbols. */
+  font-family: "Font Awesome 5 Free";
+  /* >> Weight of the font (mandatory)
+         - 400 for Regular and Brands symbols;
+         - 900 for Solid symbols. */
+  font-weight: 900;
+  /* >> Optional styling: */
+  right: 1em;
+  font-size: 1rem;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc_disabled:after {
+  /* >> Symbol you want to use: */
+  content: "\F0DD";
+  /* >> Name of the FA free font (mandatory)
+         - 'Font Awesome 5 Free' for Regular and Solid symbols;
+         - 'Font Awesome 5 Brand' for Brands symbols. */
+  font-family: "Font Awesome 5 Free";
+  /* >> Weight of the font (mandatory)
+         - 400 for Regular and Brands symbols;
+         - 900 for Solid symbols. */
+  font-weight: 900;
+  /* >> Optional styling: */
+  right: 16px;
+  font-size: 1rem;
+}
+
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_desc:after {
+  opacity: 1;
+}
+
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc_disabled:after {
+  opacity: 0;
+}
+
