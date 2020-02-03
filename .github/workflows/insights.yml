@@ -1,9 +1,9 @@
 name: PHP Insights
 
 on:
-  pull_request:
-    paths:
-      - 'develop/**.php'
+  push:
+    branches:
+      - 'develop'
 
 jobs:
   phpinsights:
@@ -20,18 +20,12 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys:
             ${{ runner.os }}-composer-
-      - run: composer require nunomaduro/phpinsights --dev
-      - uses: MilesChou/composer-action@master
-        with:
-          args: install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - name: Require php-cs-fixer
+        run: composer require nunomaduro/phpinsights --dev
+      - name: Install Composer Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
       - run:
           php artisan vendor:publish --provider="NunoMaduro\PhpInsights\Application\Adapters\Laravel\InsightsServiceProvider"
       - name: PHP Insights
         run:
           php artisan insights -v --min-quality=80 --min-complexity=80 --min-architecture=80 --min-style=80 --disable-security-check
-      - name: Discord notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        uses: Ilshidur/action-discord@master
-        with:
-          args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed.'
